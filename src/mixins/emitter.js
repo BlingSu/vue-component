@@ -19,7 +19,6 @@ function broadcast(componentName, eventName, data) {
 export default {
   methods: {
     dispatch(componentName, eventName, data) {
-      console.log(componentName, eventName, data)
       let parent = this.$parent || this.$root;
       let name = parent.$options.name;
 
