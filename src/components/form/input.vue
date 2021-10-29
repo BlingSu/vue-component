@@ -1,9 +1,10 @@
 <template>
   <input
-      type="text"
-      :value="currentValue"
-      @input="handleInput"
-      @blur="handleBlur">
+    type="text"
+    :value="currentValue"
+    @input="handleInput"
+    @blur="handleBlur"
+  />
 </template>
 
 <script>
@@ -17,19 +18,19 @@ export default {
   props: {
     value: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
   },
   data() {
     return {
-      currentValue: this.value
-    }
+      currentValue: this.value,
+    };
   },
 
-  watch:{
-    value (val) {
+  watch: {
+    value(val) {
       this.currentValue = val;
-    }
+    },
   },
 
   methods: {
@@ -43,7 +44,7 @@ export default {
     },
     handleBlur() {
       this.dispatch("iFormItem", "on-form-blur", this.currentValue);
-    }
-  }
-}
+    },
+  },
+};
 </script>

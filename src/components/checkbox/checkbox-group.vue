@@ -5,9 +5,8 @@
 </template>
 
 <script>
-
 import { findComponentsDownward } from "../../plugin/util";
-import Emitter from "../../mixins/emitter"
+import Emitter from "../../mixins/emitter";
 
 export default {
   name: "iCheckboxGroup",
@@ -17,17 +16,17 @@ export default {
   props: {
     value: {
       type: Array,
-      default () {
+      default() {
         return [];
-      }
-    }
+      },
+    },
   },
 
   data() {
     return {
       currentValue: this.value,
-      children: []
-    }
+      children: [],
+    };
   },
 
   methods: {
@@ -35,13 +34,13 @@ export default {
       this.children = findComponentsDownward(this, "iCheckbox");
       if (this.children.length) {
         const { value } = this;
-        this.children.forEach(child => {
+        this.children.forEach((child) => {
           child.model = value;
           if (update) {
             child.currentValue = value.indexOf(child.label) >= 0;
             child.group = true;
           }
-        })
+        });
       }
     },
 
@@ -50,7 +49,7 @@ export default {
       this.$emit("input", data);
       this.$emit("on-change", data);
       this.dispatch("iFormItem", "on-form-change", data);
-    }
+    },
   },
 
   mounted() {
@@ -60,7 +59,7 @@ export default {
   watch: {
     value() {
       this.updateModel(true);
-    }
-  }
-}
+    },
+  },
+};
 </script>

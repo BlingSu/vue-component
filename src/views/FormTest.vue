@@ -15,7 +15,6 @@
 </template>
 
 <script>
-
 import iForm from "../components/form/form";
 import iFormItem from "../components/form/form-item";
 import iInput from "../components/form/input";
@@ -24,40 +23,38 @@ export default {
   components: {
     iForm,
     iFormItem,
-    iInput
+    iInput,
   },
 
   data() {
     return {
       form: {
         name: "",
-        email: ""
+        email: "",
       },
       rules: {
-        name: [
-          { required: true, message: "姓名不能为空", trigger: "blur" }
-        ],
+        name: [{ required: true, message: "姓名不能为空", trigger: "blur" }],
         email: [
-          { required: true, message: '邮箱不能为空', trigger: 'blur' },
-          { type: 'email', message: '邮箱格式不正确', trigger: 'blur' }
-        ]
-      }
-    }
+          { required: true, message: "邮箱不能为空", trigger: "blur" },
+          { type: "email", message: "邮箱格式不正确", trigger: "blur" },
+        ],
+      },
+    };
   },
 
   methods: {
     handleSubmit() {
-      this.$refs.form.validate(valid => {
+      this.$refs.form.validate((valid) => {
         if (valid) {
           console.log("提交成功");
         } else {
           console.log("表单验证失败");
         }
-      })
+      });
     },
     handleReset() {
       this.$refs.form.resetFields();
-    }
-  }
+    },
+  },
 };
 </script>

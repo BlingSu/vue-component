@@ -14,6 +14,11 @@ const routes = [
     name: "CheckboxTest",
     component: () => import("../views/CheckboxTest.vue"),
   },
+  {
+    path: "/radio-test",
+    name: "RadioTest",
+    component: () => import("../views/RadioTest.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -3,8 +3,8 @@
  * */
 
 class FakeValidate {
-  test (rules) {
-    return new Promise(resolve => {
+  test(rules) {
+    return new Promise((resolve) => {
       let valid;
       for (let key in rules) {
         for (let i = 0; i < rules[key].length; i++) {
@@ -20,8 +20,8 @@ class FakeValidate {
           if (!result) {
             valid = {
               errValue: key,
-              errMessage: rules[key][i].message
-            }
+              errMessage: rules[key][i].message,
+            };
             break;
           }
         }
@@ -34,17 +34,11 @@ class FakeValidate {
       } else {
         return valid.errMessage;
       }
-    })
+    });
   }
 
   rules = {
-    isMobile: str => {
-
-    },
-    isRequired: str => {
-
-    }
-  }
+    isMobile: (str) => {},
+    isRequired: (str) => {},
+  };
 }
-
-

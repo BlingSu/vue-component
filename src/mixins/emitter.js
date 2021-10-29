@@ -5,7 +5,7 @@
  * */
 
 function broadcast(componentName, eventName, data) {
-  this.$children.forEach(child => {
+  this.$children.forEach((child) => {
     const name = child.$options.name;
 
     if (name === componentName) {
@@ -13,7 +13,7 @@ function broadcast(componentName, eventName, data) {
     } else {
       broadcast.apply(child, [componentName, eventName].concat([data]));
     }
-  })
+  });
 }
 
 export default {
@@ -35,6 +35,6 @@ export default {
     },
     broadcast(componentName, eventName, data) {
       broadcast.call(this, componentName, eventName, data);
-    }
-  }
-}
+    },
+  },
+};

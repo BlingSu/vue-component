@@ -17,7 +17,6 @@ function findComponentUpward(context, componentName) {
   return parent;
 }
 
-
 /**
  * @description 向下找到所指定的组件
  * @param this
@@ -31,10 +30,7 @@ function findComponentsDownward(context, componentName) {
     }
     const foundChild = findComponentsDownward(child, componentName);
     return components.concat(foundChild);
-  }, [])
+  }, []);
 }
 
-export {
-  findComponentUpward,
-  findComponentsDownward
-}
+export { findComponentUpward, findComponentsDownward };

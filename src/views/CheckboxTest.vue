@@ -1,11 +1,13 @@
 <template>
   <div>
     <h3>checkbox测试组件</h3>
-    <i-checkbox v-model="checkbox" @on-change="handleChange">测试按钮</i-checkbox>
+    <i-checkbox v-model="checkbox" @on-change="handleChange"
+      >测试按钮</i-checkbox
+    >
 
     <div>
       <h4>组合</h4>
-<!--      <i-checkbox :value="checkAll" @on-change="handleAllChange">全选</i-checkbox>-->
+      <!--      <i-checkbox :value="checkAll" @on-change="handleAllChange">全选</i-checkbox>-->
     </div>
 
     <i-checkbox-group v-model="group">
@@ -19,13 +21,13 @@
 </template>
 
 <script>
-import iCheckboxGroup from "../components/checkbox/checkbox-group"
+import iCheckboxGroup from "../components/checkbox/checkbox-group";
 import iCheckbox from "../components/checkbox/checkbox";
 
 export default {
   components: {
     iCheckboxGroup,
-    iCheckbox
+    iCheckbox,
   },
 
   data() {
@@ -33,16 +35,16 @@ export default {
       checkbox: false,
       group: ["1"],
       checkAll: false,
-    }
+    };
   },
 
   methods: {
     handleChange(val) {
-      console.log(val)
+      console.log(val);
     },
     handleAllChange(val) {
-      console.log(val)
-    }
-  }
-}
+      console.log(val);
+    },
+  },
+};
 </script>

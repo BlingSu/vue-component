@@ -1,19 +1,20 @@
 <template>
   <div>
-    <label
-        :class="{ 'i-form-item-label-required': isRequired }"
-        v-if="label">{{ label }}</label>
+    <label :class="{ 'i-form-item-label-required': isRequired }" v-if="label">{{
+      label
+    }}</label>
     <div>
       <slot></slot>
-      <div v-if="validateState === 'error'" class="i-form-item-message">{{ validateMessage }}</div>
+      <div v-if="validateState === 'error'" class="i-form-item-message">
+        {{ validateMessage }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 import Emitter from "../../mixins/emitter";
-import AsyncValidator from 'async-validator';
+import AsyncValidator from "async-validator";
 
 export default {
   name: "iFormItem",
@@ -25,11 +26,11 @@ export default {
   props: {
     label: {
       type: String,
-      default: ""
+      default: "",
     },
     prop: {
-      type: String
-    }
+      type: String,
+    },
   },
 
   data() {
@@ -37,15 +38,15 @@ export default {
       isRequired: false, // 是否必填
       validateState: "", // 校验转台
       validateMessage: "", // 校验不通过信息
-      initialValue: null
-    }
+      initialValue: null,
+    };
   },
 
   computed: {
     // 从form的model中动态获取当前的表单组件数据
     fieldValue() {
       return this.form.model[this.prop];
-    }
+    },
   },
 
   mounted() {
@@ -75,9 +76,9 @@ export default {
 
       let rules = this.getRules();
       if (rules.length) {
-        rules.every(rule => {
+        rules.every((rule) => {
           this.isRequired = rule.required;
-        })
+        });
       }
       this.$on("on-form-change", this.onFieldChange);
       this.$on("on-form-blur", this.onFieldBlur);
@@ -95,14 +96,16 @@ export default {
 
     resetField() {
       this.validateState = "";
-      this.validateMessage = ""
+      this.validateMessage = "";
       this.form.model[this.prop] = this.initialValue;
     },
 
     // 过滤出符合要求的rule，比如blur和change
-    getFilteredRule (trigger) {
+    getFilteredRule(trigger) {
       const rules = this.getRules();
-      return rules.filter(rule => !rule.trigger || rule.trigger.indexOf(trigger) !== -1);
+      return rules.filter(
+        (rule) => !rule.trigger || rule.trigger.indexOf(trigger) !== -1
+      );
     },
 
     /**
@@ -128,25 +131,28 @@ export default {
       let model = {};
       model[this.prop] = this.fieldValue;
 
-      validator.validate(model, {
-        firstFields: true
-      }, errors => {
-        this.validateState = !errors ? "success" : "error";
-        this.validateMessage = errors ? errors[0].message : "";
+      validator.validate(
+        model,
+        {
+          firstFields: true,
+        },
+        (errors) => {
+          this.validateState = !errors ? "success" : "error";
+          this.validateMessage = errors ? errors[0].message : "";
 
-        callback(this.validateMessage);
-      })
+          callback(this.validateMessage);
+        }
+      );
     },
     onFieldChange() {
       this.validate("change");
     },
     onFieldBlur() {
       this.validate("blur");
-    }
+    },
   },
-}
+};
 </script>
-
 
 <style>
 .i-form-item-label-required:before {

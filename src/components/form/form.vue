@@ -10,23 +10,23 @@ export default {
 
   provide() {
     return {
-      form: this
-    }
+      form: this,
+    };
   },
 
   props: {
     model: {
-      type: Object
+      type: Object,
     },
     rules: {
-      type: Object
-    }
+      type: Object,
+    },
   },
 
   data() {
     return {
-      fields: []
-    }
+      fields: [],
+    };
   },
 
   methods: {
@@ -34,17 +34,17 @@ export default {
      * public 全部重置
      * */
     resetFields() {
-      this.fields.forEach(field => {
+      this.fields.forEach((field) => {
         field.resetField();
-      })
+      });
     },
 
     validate(callback) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         let valid = true;
         let count = 0;
-        this.fields.forEach(field => {
-          field.validate("", errors => {
+        this.fields.forEach((field) => {
+          field.validate("", (errors) => {
             if (errors) {
               valid = false;
             }
@@ -55,10 +55,10 @@ export default {
                 callback(valid);
               }
             }
-          })
-        })
-      })
-    }
+          });
+        });
+      });
+    },
   },
 
   created() {
@@ -68,16 +68,16 @@ export default {
      * 如果删除就splice掉
      * */
 
-    this.$on("on-form-item-add", field => {
+    this.$on("on-form-item-add", (field) => {
       if (field) {
         this.fields.push(field);
       }
     });
-    this.$on("on-form-item-remove", field => {
+    this.$on("on-form-item-remove", (field) => {
       if (field.prop) {
         this.fields.splice(this.fields.indexOf(field), 1);
       }
-    })
-  }
-}
+    });
+  },
+};
 </script>

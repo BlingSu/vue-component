@@ -2,18 +2,20 @@
   <label>
     <span>
       <input
-          v-if="group"
-          type="checkbox"
-          :disabled="disabled"
-          :value="label"
-          v-model="model"
-          @change="change">
+        v-if="group"
+        type="checkbox"
+        :disabled="disabled"
+        :value="label"
+        v-model="model"
+        @change="change"
+      />
       <input
-          v-else
-          type="checkbox"
-          :disabled="disabled"
-          :checked="currentValue"
-          @change="change">
+        v-else
+        type="checkbox"
+        :disabled="disabled"
+        :checked="currentValue"
+        @change="change"
+      />
     </span>
     <slot></slot>
   </label>
@@ -28,23 +30,23 @@ export default {
   props: {
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     value: {
       type: [String, Number, Boolean],
-      default: false
+      default: false,
     },
     trueValue: {
       type: [String, Number, Boolean],
-      default: true
+      default: true,
     },
     falseValue: {
       type: [String, Number, Boolean],
-      default: false
+      default: false,
     },
     label: {
-      type: [String, Number, Boolean]
-    }
+      type: [String, Number, Boolean],
+    },
   },
 
   data() {
@@ -52,8 +54,8 @@ export default {
       currentValue: this.value,
       model: [],
       group: false,
-      parent: null
-    }
+      parent: null,
+    };
   },
 
   mounted() {
@@ -70,13 +72,13 @@ export default {
   },
 
   watch: {
-    value (val) {
+    value(val) {
       if (val === this.trueValue || val === this.falseValue) {
         this.updateModel();
       } else {
-        throw "value fail..."
+        throw "value fail...";
       }
-    }
+    },
   },
 
   methods: {
@@ -92,7 +94,7 @@ export default {
       this.$emit("input", value);
 
       if (this.group) {
-        console.log(this.model)
+        console.log(this.model);
         this.parent.change(this.model);
       } else {
         this.$emit("on-change", value);
@@ -100,12 +102,11 @@ export default {
         // 给from派发事件，用于验证
         // this.dispatch("iFormItem", "on-form-change", value);
       }
-
     },
 
     updateModel() {
       this.currentValue = this.value === this.trueValue;
-    }
-  }
-}
+    },
+  },
+};
 </script>
