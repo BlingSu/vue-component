@@ -9,6 +9,11 @@ const routes = [
     name: "FormTest",
     component: () => import("../views/FormTest.vue"),
   },
+  {
+    path: "/checkbox-test",
+    name: "CheckboxTest",
+    component: () => import("../views/CheckboxTest.vue"),
+  },
 ];
 
 const router = new VueRouter({
