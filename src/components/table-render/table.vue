@@ -18,6 +18,9 @@
               :render="col.render"
             ></Render>
           </template>
+          <template v-else-if="'slot' in col">
+            <slot-scope :row="row" :column="col" :index="rowIndex"></slot-scope>
+          </template>
           <template v-else>{{ row[col.key] }}</template>
         </td>
       </tr>
@@ -27,10 +30,18 @@
 
 <script>
 import Render from "./render";
+import SlotScope from "./slot";
 
 export default {
   components: {
     Render,
+    SlotScope
+  },
+
+  data() {
+    return {
+      tableRoot: this
+    }
   },
   props: {
     columns: {

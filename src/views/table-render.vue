@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table-render :columns="columns" :data="data"></table-render>
+    <table-render :columns="columns" :data="data" />
   </div>
 </template>
 
