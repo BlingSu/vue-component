@@ -24,6 +24,11 @@ const routes = [
     name: "DisplayTest",
     component: () => import("../views/DisplayTest.vue"),
   },
+  {
+    path: "/table-render",
+    name: "TableRender",
+    component: () => import("../views/table-render.vue"),
+  },
 ];
 
 const router = new VueRouter({

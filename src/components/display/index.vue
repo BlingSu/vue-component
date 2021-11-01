@@ -36,14 +36,17 @@ export default {
      * @param source .vue文件代码，也就是props: code
      * @param type 分割部分 template, script, style
      * */
-    getSource (source, type) {
+    getSource(source, type) {
       const regex = new RegExp(`<${type}[^>]*>`);
       let openingTag = source.match(regex);
 
-      if (!openingTag) return '';
+      if (!openingTag) return "";
       else openingTag = openingTag[0];
 
-      return source.slice(source.indexOf(openingTag) + openingTag.length, source.lastIndexOf(`</${type}>`));
+      return source.slice(
+        source.indexOf(openingTag) + openingTag.length,
+        source.lastIndexOf(`</${type}>`)
+      );
     },
 
     splitCode() {
