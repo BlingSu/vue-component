@@ -33,4 +33,19 @@ function findComponentsDownward(context, componentName) {
   }, []);
 }
 
-export { findComponentUpward, findComponentsDownward };
+/**
+ * @param len 长度
+ * @description 随机字符串
+ * */
+function randomStr(len = 12) {
+  const $chars =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+  const maxPos = $chars.length;
+  let str = "";
+  for (let i = 0; i < len; i++) {
+    str += $chars.charAt(Math.floor(Math.random() * maxPos));
+  }
+  return str;
+}
+
+export { findComponentUpward, findComponentsDownward, randomStr };

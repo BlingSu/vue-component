@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import iRadioGroup from "../components/radio/radio-group"
+import iRadioGroup from "../components/radio/radio-group";
 import iRadio from "../components/radio/radio";
 
 export default {
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       radio: 0,
-      group: "1"
+      group: "1",
     };
   },
 

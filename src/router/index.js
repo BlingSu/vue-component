@@ -19,6 +19,11 @@ const routes = [
     name: "RadioTest",
     component: () => import("../views/RadioTest.vue"),
   },
+  {
+    path: "/display-test",
+    name: "DisplayTest",
+    component: () => import("../views/DisplayTest.vue"),
+  },
 ];
 
 const router = new VueRouter({
