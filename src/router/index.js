@@ -25,9 +25,14 @@ const routes = [
     component: () => import("../views/DisplayTest.vue"),
   },
   {
-    path: "/table-render",
-    name: "TableRender",
-    component: () => import("../views/table-render.vue"),
+    path: "/table-test",
+    name: "TableTest",
+    component: () => import("../views/TableTest.vue"),
+  },
+  {
+    path: "/tree-test",
+    name: "TreeTest",
+    component: () => import("../views/TreeTest.vue"),
   },
 ];
 

@@ -39,7 +39,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "vue/no-use-v-if-with-v-for": "off"
+    }
   },
   "browserslist": [
     "> 1%",

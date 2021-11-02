@@ -35,13 +35,13 @@ import SlotScope from "./slot";
 export default {
   components: {
     Render,
-    SlotScope
+    SlotScope,
   },
 
   data() {
     return {
-      tableRoot: this
-    }
+      tableRoot: this,
+    };
   },
   props: {
     columns: {
